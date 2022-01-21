@@ -1,15 +1,11 @@
 #general imports I almost always need for bots
 import discord #pycord
 import os #for token
-from replit import db #database
 import requests #for rate limit checker
-import random #random numbers
 import asyncio #for asyncio functions
-import json #to write to json
 from discord.ext import commands #for commands
-from discord.commands import SlashCommandGroup, Option, permissions #slash commands, options, permissions
-from datetime import datetime, timedelta #time and ping command
-import math #for math
+from discord.commands import Option, permissions #slash commands, options, permissions
+from datetime import datetime #time and ping command
 
 intents = discord.Intents.default()
 bot = discord.Bot(intents=intents)
