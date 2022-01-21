@@ -3,14 +3,14 @@ import discord #pycord
 import os #for token
 import requests #for rate limit checker
 import json
-from discord.ext import commands #for commands
-from discord.commands import Option, permissions #slash commands, options, permissions
+import keep_alive
+from discord.commands import Option #slash commands, options, permissions
 from datetime import datetime #time and ping command
 
 intents = discord.Intents.default()
 bot = discord.Bot(intents=intents)
 
-guild_ids = [806706495466766366] #enter your guild ID's here for instant use instead of waiting for global slash registration
+guild_ids = [806706495466766366, 910935393497657374] #enter your guild ID's here for instant use instead of waiting for global slash registration
 
 #api limit checker | use 'kill 1' in the shell if you get limited
 r = requests.head(url="https://discord.com/api/v1")
@@ -62,10 +62,6 @@ async def error(ctx, code):
   embed = discord.Embed(color=0xFF0000, description= f"❌ {code}")
   await ctx.respond(embed=embed, ephemeral=True)
 
-#simple confirmation message, passes ctx from commands
-async def confirm(ctx, code, eph): 
-  embed = discord.Embed(color=0x00FF00, description= f"✅ {code}")
-  await ctx.respond(embed=embed, ephemeral=eph)
-
+keep_alive.keep_alive()  #keep the bot alive
 #bot
 bot.run(os.environ.get("TOKEN"))  #secret variable named 'TOKEN'
